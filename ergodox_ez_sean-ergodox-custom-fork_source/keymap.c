@@ -37,6 +37,7 @@ enum custom_keycodes {
   RGB_SLD = EZ_SAFE_RANGE,
   ST_MACRO_0,
   ST_MACRO_1,
+  ST_MACRO_2,
   CSA_LSPO,
   CSA_RSPC,
 };
@@ -46,11 +47,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     CSA_UGRV,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_TILD,                                        KC_EQUAL,       KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,
     KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           TG(1),                                          TG(2),          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           CSA_DCRC,
     KC_ESCAPE,      KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           LT(2,KC_SCOLON),CSA_AGRV,
-    KC_LSHIFT,      LCTL_T(KC_Z),   KC_X,           KC_C,           KC_V,           KC_B,           KC_HYPR,                                        KC_TRANSPARENT, KC_N,           KC_M,           KC_COMMA,       KC_DOT,         CSA_ECUT,       KC_RSHIFT,
+    KC_LSHIFT,      LCTL_T(KC_Z),   KC_X,           KC_C,           KC_V,           KC_B,           ST_MACRO_0,                                     KC_HYPR,        KC_N,           KC_M,           KC_COMMA,       KC_DOT,         CSA_ECUT,       KC_RSHIFT,
     MO(1),          WEBUSB_PAIR,    KC_TRANSPARENT, KC_LALT,        KC_LGUI,                                                                                                        KC_LEFT,        KC_RALT,        KC_RIGHT,       KC_UP,          KC_DOWN,
                                                                                                     DYN_MACRO_PLAY1,DYN_REC_START1, KC_TRANSPARENT, KC_TRANSPARENT,
                                                                                                                     DYN_REC_STOP,   KC_TRANSPARENT,
-                                                                                    KC_SPACE,       KC_BSPACE,      ST_MACRO_0,     ST_MACRO_1,     KC_ENTER,       KC_SPACE
+                                                                                    KC_SPACE,       KC_BSPACE,      ST_MACRO_1,     ST_MACRO_2,     KC_ENTER,       KC_SPACE
   ),
   [1] = LAYOUT_ergodox_pretty(
     KC_ESCAPE,      KC_F1,          KC_F2,          KC_F3,          KC_F4,          KC_F5,          KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_F6,          KC_F7,          KC_F8,          KC_F9,          KC_F10,         KC_F11,
@@ -79,11 +80,17 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
     case ST_MACRO_0:
     if (record->event.pressed) {
-      SEND_STRING(SS_LGUI(SS_TAP(X_TAB)));
+      SEND_STRING(SS_LCTL(SS_TAP(X_A)));
 
     }
     break;
     case ST_MACRO_1:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LGUI(SS_TAP(X_TAB)));
+
+    }
+    break;
+    case ST_MACRO_2:
     if (record->event.pressed) {
       SEND_STRING(SS_LSFT(SS_TAP(X_2)) SS_DELAY(100) SS_TAP(X_Q));
 
