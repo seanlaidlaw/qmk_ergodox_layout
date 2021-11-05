@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-cd "/Users/sl31/ergodox/ergodox_config"
+cd "/Users/sl31/Library/Mobile Documents/com~apple~CloudDocs/Documents/10-19 Personal Projects/13 Customisations/13.03 Ergodox Keyboard QMK Configuration"
 
 
 mkdir tmp
