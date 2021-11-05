@@ -10,9 +10,11 @@
 #include "keymap_canadian_multilingual.h"
 #include "keymap_german_ch.h"
 #include "keymap_jp.h"
+#include "keymap_korean.h"
 #include "keymap_bepo.h"
 #include "keymap_italian.h"
 #include "keymap_slovenian.h"
+#include "keymap_lithuanian_azerty.h"
 #include "keymap_danish.h"
 #include "keymap_norwegian.h"
 #include "keymap_portuguese.h"
@@ -22,6 +24,8 @@
 #include "keymap_russian.h"
 #include "keymap_uk.h"
 #include "keymap_estonian.h"
+#include "keymap_belgian.h"
+#include "keymap_us_international.h"
 
 #define KC_MAC_UNDO LGUI(KC_Z)
 #define KC_MAC_CUT LGUI(KC_X)
@@ -53,9 +57,10 @@ enum custom_keycodes {
   CSA_RSPC,
 };
 
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_ergodox_pretty(
-    CSA_UGRV,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_TILD,                                        KC_EQUAL,       KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,
+    CSA_SLASH,      KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           CSA_DTLD,                                       KC_EQUAL,       KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,
     KC_TAB,         KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           CSA_DCRC,
     KC_ESCAPE,      KC_A,           KC_S,           KC_D,           KC_F,           KC_G,                                                                           KC_H,           KC_J,           KC_K,           KC_L,           LT(2,KC_SCOLON),CSA_AGRV,
     KC_LSHIFT,      KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           ST_MACRO_0,                                     KC_HYPR,        KC_N,           KC_M,           KC_COMMA,       KC_DOT,         CSA_ECUT,       KC_RSHIFT,
@@ -195,3 +200,5 @@ uint32_t layer_state_set_user(uint32_t state) {
   }
   return state;
 };
+
+
